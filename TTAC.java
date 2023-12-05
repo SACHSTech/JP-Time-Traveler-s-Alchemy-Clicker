@@ -3,21 +3,23 @@ import processing.core.PImage;
 
 public class TTAC extends PApplet {
 
+    PImage imgLayout;
+
     int frameCount;
 
-    int mysticalScribes = 0;
-    int alchemyAprentices = 0;
-    int temporalObservations = 0;
-    int enchantedAlembics = 0;
-    int celestialCatalysts = 0;
-    int guardiansOfTheLab = 0;
-    int eraLinkingConduit = 0;
-    int alchemyAutomatons = 0;
-    int aetherialAmplifiers = 0;
-    int chronoKeepers = 0;
+    int intMysticalScribes = 0;
+    int intAlchemyAprentices = 0;
+    int intTemporalObservations = 0;
+    int intEnchantedAlembics = 0;
+    int intCelestialCatalysts = 0;
+    int intGuardiansOfTheLab = 0;
+    int intEraLinkingConduit = 0;
+    int intAlchemyAutomatons = 0;
+    int intAetherialAmplifiers = 0;
+    int intChronoKeepers = 0;
 
-    int potionsBrewed = 0;
-    float essence = 0;
+    int intPotionsBrewed = 0;
+    float fltEssense = 0;
     
     
     /**
@@ -31,22 +33,26 @@ public class TTAC extends PApplet {
      * Initializes the game state and loads necessary resources.
      */
     public void setup() {
-
+        imgLayout = loadImage("Layout.png");
+        imgLayout.resize(width, height);
     }
 
     public void draw() {
         background(220);
   
         // Alchemy Table
-        drawAlchemyTable(width / 6, (float)(height / 2.5));
+        drawAlchemyTable((float)(width / 6.5), (float)(height / 2.5));
         
-        // Display Essence
+        // Display fltEssense
         fill(0);
         textSize(20);
-        text("Essence: " + essence, 20, 30);
+        text("fltEssense: " + fltEssense, 20, 30);
         
         // Display Potions Brewed
-        text("Potions Brewed: " + potionsBrewed, 20, 60);
+        text("Potions Brewed: " + intPotionsBrewed, 20, 60);
+
+        image(imgLayout, 0, 0);
+
         calculateUpgrades();
         updateUpgrades();
     }
@@ -58,11 +64,11 @@ public class TTAC extends PApplet {
         if (frameCount == 60) {
 
             frameCount = 0;
-            essence += mysticalScribes;
+            fltEssense += intMysticalScribes;
             
             if (mousePressed) {
 
-                essence += alchemyAprentices;
+                fltEssense += intAlchemyAprentices;
 
             }
         }
@@ -77,7 +83,7 @@ public class TTAC extends PApplet {
             
     }
 
-    void drawAlchemyTable(float x, float y) {
+    public void drawAlchemyTable(float x, float y) {
         // Draw the alchemy table
         fill(150, 75, 0); // Brown color
         rect(x - 150, y - 100, 300, 200);
@@ -89,15 +95,17 @@ public class TTAC extends PApplet {
         ellipse(x + 50, y - 50, 50, 50); // Ingredient 2
     }
 
-    void collectingEssence() {
-      // Check if the click is on the alchemy table
-        if (mouseX > width / 2 - 150 && mouseX < width/ 2 + 150 && mouseY > height / 2 - 100 && mouseY < height / 2 + 100) {
-            // Clicking on the alchemy table generates essence
-            essence++;
+    public void mousePressed() {
+        
+        // Check if the click is on the alchemy table
+        if (mouseX > (float)(width / 6.5) - 150 && mouseX < (float)(width / 6.5) + 150 && mouseY > (float)(height / 2.5) - 100 && mouseY < (float)(height / 2.5) + 100) {
+            // Clicking on the alchemy table generates fltEssense
+            fltEssense++;
 
             // Update the display
             redraw();
         }
+
     }
 
 }
