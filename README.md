@@ -1,5 +1,4 @@
-# JP-Time-Traveler-s-Alchemy-Clicker
-Theme: Time Traveler's Alchemy Clicker
+# JP Games Presents Time-Traveler's Alchemy Clicker
 
 In this game, players take on the role of a time traveler who discovers an ancient alchemy lab. The goal is to discover and create a variety of potions and elixirs by clicking on different elements in the lab. Here are some key features:
 
